@@ -1,4 +1,4 @@
-package com.lynas.myapplication;
+package com.lynas.bgtaskdemo;
 
 import org.junit.Test;
 
