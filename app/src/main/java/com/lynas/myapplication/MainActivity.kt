@@ -10,8 +10,9 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 
+val imgStr = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpBnFZXQbe8rSeORasRchEU4LBr59MhyTOySPLK8UiReMViDESNw"
+
 class MainActivity : AppCompatActivity() {
-    private val imgStr = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpBnFZXQbe8rSeORasRchEU4LBr59MhyTOySPLK8UiReMViDESNw"
     private lateinit var imageView: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,18 +44,20 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun getBitmapFromURL(imgUrl: String): Bitmap? {
-        return try {
-            val url = URL(imgUrl)
-            val connection = url.openConnection() as HttpURLConnection
-            connection.doInput = true
-            connection.connect()
-            val input = connection.inputStream
-            BitmapFactory.decodeStream(input)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            null
-        }
+}
 
+
+fun getBitmapFromURL(imgUrl: String): Bitmap? {
+    return try {
+        val url = URL(imgUrl)
+        val connection = url.openConnection() as HttpURLConnection
+        connection.doInput = true
+        connection.connect()
+        val input = connection.inputStream
+        BitmapFactory.decodeStream(input)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
     }
+
 }
